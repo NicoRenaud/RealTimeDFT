@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# number of core
+NP=4
+
+# Molecule to use in the calculation
+MOL=h2.xyz
+UNITS=bohr
+
+#Possible basis
+#'3-21g' 'sto3g' 'sto-3g' 'sto-6g'
+#'6-31g' '6-31g**' '6-31g(d,p)' '6-31g**++' '6-31g++**' '6-311g**' '6-311g++(2d,2p)'
+#'6-311g++(3d,3p)' '6-311g++(3df,3pd)'
+#'lacvp'
+#'ccpvdz' 'cc-pvdz' 'ccpvtz' 'cc-pvtz' 'ccpvqz' 'cc-pvqz' 'ccpv5z' 'cc-pv5z' 'ccpv6z' 'cc-pv6z'
+#'aug-cc-pvdz'  'aug-cc-pvtz' 'aug-cc-pvqz'  'aug-cc-pv5z' 'aug-cc-pv6z'    
+#'dzvp':'dzvp',
+
+# basis set
+BASIS='sto-3g'
+
+
+
+# Run the calculation
+mpirun -np $NP python ../tddft_mpi.py $MOL -u $UNITS -basis $BASIS 
+
+ 
